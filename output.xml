@@ -1,0 +1,1123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20171227 14:32:35.324" generator="Robot 3.0.2 (Python 2.7.10 on darwin)">
+<suite source="/Users/ashish.sharma6/Workspace/BBM-Partner-QE-India" id="s1" name="BBM-Partner-QE-India">
+<suite source="/Users/ashish.sharma6/Workspace/BBM-Partner-QE-India/tests" id="s1-s1" name="Tests">
+<suite source="/Users/ashish.sharma6/Workspace/BBM-Partner-QE-India/tests/BBM_Login.robot" id="s1-s1-s1" name="BBM Login">
+<test id="s1-s1-s1-t1" name="Login to BBM">
+<kw type="setup" name="Clear BBM Data" library="resource">
+<kw name="Run Process" library="Process">
+<doc>Runs a process and waits for it to complete.</doc>
+<arguments>
+<arg>adb -s ${UDID} shell pm clear ${BBM_PACKAGE}</arg>
+<arg>shell=true</arg>
+<arg>alias=proc1</arg>
+</arguments>
+<msg timestamp="20171227 14:32:36.194" level="INFO">Starting process:
+adb -s 192.168.56.101:5555 shell pm clear com.bbm</msg>
+<msg timestamp="20171227 14:32:36.212" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20171227 14:32:36.235" level="INFO">Process completed.</msg>
+<status status="PASS" endtime="20171227 14:32:36.235" starttime="20171227 14:32:36.193"></status>
+</kw>
+<kw name="Get Process Result" library="Process">
+<doc>Returns the specified `result object` or some of its attributes.</doc>
+<arguments>
+<arg>proc1</arg>
+<arg>stdout=true</arg>
+</arguments>
+<assign>
+<var>${CLEAR_STATUS}</var>
+</assign>
+<msg timestamp="20171227 14:32:36.238" level="INFO">${CLEAR_STATUS} = </msg>
+<status status="PASS" endtime="20171227 14:32:36.239" starttime="20171227 14:32:36.237"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${CLEAR_STATUS} Clear Data</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:32:36.240" starttime="20171227 14:32:36.239"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:32:36.241" starttime="20171227 14:32:36.192"></status>
+</kw>
+<kw name="Open BBM App" library="resource">
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Open Application</arg>
+<arg>${APPIUM_SERVER}</arg>
+<arg>platformName=${PLATFORM}</arg>
+<arg>udid=${UDID}</arg>
+<arg>deviceName=${ALIAS}</arg>
+<arg>app=${BBM_PACKAGE}</arg>
+<arg>appActivity=${BBM_ACTIVITY}</arg>
+<arg>alias=${ALIAS}</arg>
+<arg>noReset=True</arg>
+<arg>autoGrantPermissions=true</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+<var>${value}</var>
+</assign>
+<kw name="Open Application" library="AppiumLibrary">
+<doc>Opens a new application to given Appium server.</doc>
+<arguments>
+<arg>${APPIUM_SERVER}</arg>
+<arg>platformName=${PLATFORM}</arg>
+<arg>udid=${UDID}</arg>
+<arg>deviceName=${ALIAS}</arg>
+<arg>app=${BBM_PACKAGE}</arg>
+<arg>appActivity=${BBM_ACTIVITY}</arg>
+<arg>alias=${ALIAS}</arg>
+<arg>noReset=True</arg>
+<arg>autoGrantPermissions=true</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:32:55.665" starttime="20171227 14:32:36.245"></status>
+</kw>
+<msg timestamp="20171227 14:32:55.666" level="INFO">${status} = PASS</msg>
+<msg timestamp="20171227 14:32:55.666" level="INFO">${value} = 1</msg>
+<status status="PASS" endtime="20171227 14:32:55.666" starttime="20171227 14:32:36.244"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Open Apps is ${status}</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:32:55.669" starttime="20171227 14:32:55.667"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:32:55.670" starttime="20171227 14:32:36.242"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>10</arg>
+</arguments>
+<msg timestamp="20171227 14:33:05.673" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" endtime="20171227 14:33:05.673" starttime="20171227 14:32:55.671"></status>
+</kw>
+<kw name="Login with Valid Credential E-mail" library="BBID">
+<arguments>
+<arg>${EMAIL}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<kw name="Wait Until Welcome To BBM Displayed" library="BBID">
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Wait Until Page Contains</arg>
+<arg>Welcome to BBM</arg>
+<arg>timeout=120</arg>
+<arg>error=Couldn't locate Welcome to BBM Page</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+<var>${value}</var>
+</assign>
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>Welcome to BBM</arg>
+<arg>timeout=120</arg>
+<arg>error=Couldn't locate Welcome to BBM Page</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:33:09.025" starttime="20171227 14:33:05.678"></status>
+</kw>
+<msg timestamp="20171227 14:33:09.026" level="INFO">${status} = PASS</msg>
+<msg timestamp="20171227 14:33:09.026" level="INFO">${value} = None</msg>
+<status status="PASS" endtime="20171227 14:33:09.026" starttime="20171227 14:33:05.678"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'!='PASS'</arg>
+<arg>Fail</arg>
+<arg>Fail to locate Login Screen</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:33:09.029" starttime="20171227 14:33:09.027"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Locate Welcome Page is ${status}</arg>
+<arg>console=yes</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:33:09.031" starttime="20171227 14:33:09.030"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:33:09.032" starttime="20171227 14:33:05.676"></status>
+</kw>
+<kw name="Tap Sign In Button" library="BBID">
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>id=formId:signinPhone</arg>
+<arg>timeout=20</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:33:09.692" starttime="20171227 14:33:09.034"></status>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>id=formId:signinPhone</arg>
+</arguments>
+<msg timestamp="20171227 14:33:09.693" level="INFO">Clicking element 'id=formId:signinPhone'.</msg>
+<status status="PASS" endtime="20171227 14:33:10.083" starttime="20171227 14:33:09.693"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:33:10.085" starttime="20171227 14:33:09.033"></status>
+</kw>
+<kw name="Wait Until Welcome Back Displayed" library="BBID">
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>Welcome Back</arg>
+<arg>error=Couldn't locate Welcome Back Page (too slow maybe)</arg>
+<arg>timeout=60</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:33:11.737" starttime="20171227 14:33:10.087"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:33:11.737" starttime="20171227 14:33:10.086"></status>
+</kw>
+<kw name="Tap Sign In With Email" library="BBID">
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Click Element</arg>
+<arg>xpath=//android.widget.EditText[@content-desc="Email Address"]</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+<var>${value}</var>
+</assign>
+<kw name="Click Element" library="AppiumLibrary">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//android.widget.EditText[@content-desc="Email Address"]</arg>
+</arguments>
+<msg timestamp="20171227 14:33:11.743" level="INFO">Clicking element 'xpath=//android.widget.EditText[@content-desc="Email Address"]'.</msg>
+<kw name="Log Source" library="AppiumLibrary">
+<doc>Logs and returns the entire html source of the current page or frame.</doc>
+<status status="PASS" endtime="20171227 14:33:12.048" starttime="20171227 14:33:11.869"></status>
+</kw>
+<msg timestamp="20171227 14:33:12.051" level="FAIL">ValueError: Element locator 'xpath=//android.widget.EditText[@content-desc="Email Address"]' did not match any elements.</msg>
+<status status="FAIL" endtime="20171227 14:33:12.051" starttime="20171227 14:33:11.742"></status>
+</kw>
+<msg timestamp="20171227 14:33:12.052" level="INFO">${status} = FAIL</msg>
+<msg timestamp="20171227 14:33:12.052" level="INFO">${value} = ValueError: Element locator 'xpath=//android.widget.EditText[@content-desc="Email Address"]' did not match any elements.</msg>
+<status status="PASS" endtime="20171227 14:33:12.052" starttime="20171227 14:33:11.741"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:33:12.053" starttime="20171227 14:33:11.738"></status>
+</kw>
+<kw name="Send E-mail BBM" library="BBID">
+<arguments>
+<arg>${email}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>id=formId:email</arg>
+<arg>timeout=30</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:33:12.373" starttime="20171227 14:33:12.054"></status>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>id=formId:email</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20171227 14:33:12.374" level="INFO">Typing text 'ashish.sharma6@globallogic.com' into text field 'id=formId:email'</msg>
+<status status="PASS" endtime="20171227 14:33:17.393" starttime="20171227 14:33:12.374"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:33:17.394" starttime="20171227 14:33:12.053"></status>
+</kw>
+<kw name="Send PASSWORD BBM" library="BBID">
+<arguments>
+<arg>${password}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>id=formId:password</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:33:18.036" starttime="20171227 14:33:17.396"></status>
+</kw>
+<kw name="Input Password" library="AppiumLibrary">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>id=formId:password</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20171227 14:33:18.038" level="INFO">Typing password into text field 'id=formId:password'</msg>
+<status status="PASS" endtime="20171227 14:33:24.172" starttime="20171227 14:33:18.037"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:33:24.173" starttime="20171227 14:33:17.394"></status>
+</kw>
+<kw name="Tap Sign In" library="BBID">
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>id=formId:logincommandLink</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:33:24.965" starttime="20171227 14:33:24.175"></status>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>id=formId:logincommandLink</arg>
+</arguments>
+<msg timestamp="20171227 14:33:24.966" level="INFO">Clicking element 'id=formId:logincommandLink'.</msg>
+<status status="PASS" endtime="20171227 14:33:25.264" starttime="20171227 14:33:24.965"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:33:25.266" starttime="20171227 14:33:24.173"></status>
+</kw>
+<kw name="Switch BBM Account" library="BBID">
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>id=alertTitle</arg>
+<arg>timeout=45</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:33:35.194" starttime="20171227 14:33:25.267"></status>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>id=button1</arg>
+</arguments>
+<msg timestamp="20171227 14:33:35.196" level="INFO">Clicking element 'id=button1'.</msg>
+<status status="PASS" endtime="20171227 14:33:37.751" starttime="20171227 14:33:35.195"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:33:37.751" starttime="20171227 14:33:25.267"></status>
+</kw>
+<kw name="Skip Find Friends" library="BBID">
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>Find Friends</arg>
+<arg>timeout=20</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:33:42.402" starttime="20171227 14:33:37.753"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Wait Until Page Contains Element</arg>
+<arg>id=message</arg>
+<arg>timeout=20</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+<var>${value}</var>
+</assign>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>id=message</arg>
+<arg>timeout=20</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:33:43.115" starttime="20171227 14:33:42.404"></status>
+</kw>
+<msg timestamp="20171227 14:33:43.116" level="INFO">${status} = PASS</msg>
+<msg timestamp="20171227 14:33:43.116" level="INFO">${value} = None</msg>
+<status status="PASS" endtime="20171227 14:33:43.116" starttime="20171227 14:33:42.403"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'=='PASS'</arg>
+<arg>Click Element</arg>
+<arg>id=button2</arg>
+</arguments>
+<kw name="Click Element" library="AppiumLibrary">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>id=button2</arg>
+</arguments>
+<msg timestamp="20171227 14:33:43.118" level="INFO">Clicking element 'id=button2'.</msg>
+<status status="PASS" endtime="20171227 14:33:46.344" starttime="20171227 14:33:43.118"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:33:46.345" starttime="20171227 14:33:43.117"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'=='PASS'</arg>
+<arg>Wait Until Page Contains Element</arg>
+<arg>id=title_template</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>id=title_template</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:33:49.644" starttime="20171227 14:33:46.348"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:33:49.645" starttime="20171227 14:33:46.346"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'=='PASS'</arg>
+<arg>Click Element</arg>
+<arg>id=button1</arg>
+</arguments>
+<kw name="Click Element" library="AppiumLibrary">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>id=button1</arg>
+</arguments>
+<msg timestamp="20171227 14:33:49.648" level="INFO">Clicking element 'id=button1'.</msg>
+<status status="PASS" endtime="20171227 14:33:53.648" starttime="20171227 14:33:49.647"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:33:53.649" starttime="20171227 14:33:49.646"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'=='PASS'</arg>
+<arg>Log To Console</arg>
+<arg>Success Skip Friends</arg>
+</arguments>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Success Skip Friends</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:33:53.652" starttime="20171227 14:33:53.651"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:33:53.653" starttime="20171227 14:33:53.650"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:33:53.654" starttime="20171227 14:33:37.752"></status>
+</kw>
+<kw name="Privacy Consent" library="BBID">
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>id=alertTitle</arg>
+<arg>timeout=45</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:33:54.691" starttime="20171227 14:33:53.670"></status>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>id=button1</arg>
+</arguments>
+<msg timestamp="20171227 14:33:54.693" level="INFO">Clicking element 'id=button1'.</msg>
+<status status="PASS" endtime="20171227 14:33:55.341" starttime="20171227 14:33:54.692"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:33:55.342" starttime="20171227 14:33:53.669"></status>
+</kw>
+<kw name="Ignore Personalize Your Profile" library="BBID">
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Wait Until Page Contains Element</arg>
+<arg>id=set_avatar_info</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+<var>${value}</var>
+</assign>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>id=set_avatar_info</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:33:56.090" starttime="20171227 14:33:55.345"></status>
+</kw>
+<msg timestamp="20171227 14:33:56.091" level="INFO">${status} = PASS</msg>
+<msg timestamp="20171227 14:33:56.092" level="INFO">${value} = None</msg>
+<status status="PASS" endtime="20171227 14:33:56.093" starttime="20171227 14:33:55.344"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'=='PASS'</arg>
+<arg>Go Back</arg>
+</arguments>
+<kw name="Go Back" library="AppiumLibrary">
+<doc>Goes one step backward in the browser history.</doc>
+<status status="PASS" endtime="20171227 14:33:57.211" starttime="20171227 14:33:56.095"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:33:57.212" starttime="20171227 14:33:56.094"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Success Ignore Personalize Your Profile</arg>
+<arg>console=yes</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:33:57.213" starttime="20171227 14:33:57.212"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:33:57.214" starttime="20171227 14:33:55.343"></status>
+</kw>
+<kw name="Ignore Dim Screen" library="BBID">
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>There are Contacts and then there are BBM Contacts.</arg>
+<arg>error=Couldn't Locate There are Contacts...</arg>
+<arg>timeout=20</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:33:57.248" starttime="20171227 14:33:57.216"></status>
+</kw>
+<kw name="Click Text" library="AppiumLibrary">
+<doc>Click text identified by ``text``.</doc>
+<arguments>
+<arg>There are Contacts and then there are BBM Contacts.</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:33:58.670" starttime="20171227 14:33:57.248"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Success Ignore Dim Screen\nSleeping Now</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:33:58.671" starttime="20171227 14:33:58.670"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:33:58.672" starttime="20171227 14:33:57.215"></status>
+</kw>
+<kw name="Iddling" library="BBID">
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>20</arg>
+</arguments>
+<msg timestamp="20171227 14:34:18.675" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" endtime="20171227 14:34:18.676" starttime="20171227 14:33:58.673"></status>
+</kw>
+<kw name="Navigate" library="FUNCTIONALITY">
+<arguments>
+<arg>Chats</arg>
+</arguments>
+<kw name="Get Current Activity" library="resource">
+<kw name="Get Activity" library="AppiumLibrary">
+<doc>Retrieves the current activity on the device.</doc>
+<assign>
+<var>${ACTIVITY}</var>
+</assign>
+<msg timestamp="20171227 14:34:18.812" level="INFO">${ACTIVITY} = .ui.activities.MainActivity</msg>
+<status status="PASS" endtime="20171227 14:34:18.812" starttime="20171227 14:34:18.677"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Accessing ${ACTIVITY}</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:18.814" starttime="20171227 14:34:18.813"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${ACTIVITY}</arg>
+</arguments>
+<msg timestamp="20171227 14:34:18.816" level="INFO">${ACTIVITY} = .ui.activities.MainActivity</msg>
+<status status="PASS" endtime="20171227 14:34:18.817" starttime="20171227 14:34:18.815"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:18.817" starttime="20171227 14:34:18.677"></status>
+</kw>
+<kw name="Run Keywords" library="BuiltIn">
+<doc>Executes all the given keywords in a sequence.</doc>
+<arguments>
+<arg>Should Be Equal</arg>
+<arg>'${ACTIVITY}'</arg>
+<arg>'.ui.activities.MainActivity'</arg>
+<arg>AND</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>id=main_toolbar</arg>
+</arguments>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>'${ACTIVITY}'</arg>
+<arg>'.ui.activities.MainActivity'</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:18.819" starttime="20171227 14:34:18.818"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>id=main_toolbar</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:19.043" starttime="20171227 14:34:18.820"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:19.044" starttime="20171227 14:34:18.818"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>${tab_name}</arg>
+<arg>error=Couldn't locate ${tab_name}</arg>
+<arg>timeout=30</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:19.137" starttime="20171227 14:34:19.044"></status>
+</kw>
+<kw name="Click Text" library="AppiumLibrary">
+<doc>Click text identified by ``text``.</doc>
+<arguments>
+<arg>${tab_name}</arg>
+<arg>exact_match=True</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:19.296" starttime="20171227 14:34:19.137"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:19.297" starttime="20171227 14:34:18.676"></status>
+</kw>
+<kw name="Navigate" library="FUNCTIONALITY">
+<arguments>
+<arg>Contacts</arg>
+</arguments>
+<kw name="Get Current Activity" library="resource">
+<kw name="Get Activity" library="AppiumLibrary">
+<doc>Retrieves the current activity on the device.</doc>
+<assign>
+<var>${ACTIVITY}</var>
+</assign>
+<msg timestamp="20171227 14:34:19.503" level="INFO">${ACTIVITY} = .ui.activities.MainActivity</msg>
+<status status="PASS" endtime="20171227 14:34:19.503" starttime="20171227 14:34:19.299"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Accessing ${ACTIVITY}</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:19.505" starttime="20171227 14:34:19.504"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${ACTIVITY}</arg>
+</arguments>
+<msg timestamp="20171227 14:34:19.507" level="INFO">${ACTIVITY} = .ui.activities.MainActivity</msg>
+<status status="PASS" endtime="20171227 14:34:19.507" starttime="20171227 14:34:19.506"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:19.508" starttime="20171227 14:34:19.298"></status>
+</kw>
+<kw name="Run Keywords" library="BuiltIn">
+<doc>Executes all the given keywords in a sequence.</doc>
+<arguments>
+<arg>Should Be Equal</arg>
+<arg>'${ACTIVITY}'</arg>
+<arg>'.ui.activities.MainActivity'</arg>
+<arg>AND</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>id=main_toolbar</arg>
+</arguments>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>'${ACTIVITY}'</arg>
+<arg>'.ui.activities.MainActivity'</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:19.510" starttime="20171227 14:34:19.509"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>id=main_toolbar</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:20.025" starttime="20171227 14:34:19.510"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:20.025" starttime="20171227 14:34:19.508"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>${tab_name}</arg>
+<arg>error=Couldn't locate ${tab_name}</arg>
+<arg>timeout=30</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:20.167" starttime="20171227 14:34:20.026"></status>
+</kw>
+<kw name="Click Text" library="AppiumLibrary">
+<doc>Click text identified by ``text``.</doc>
+<arguments>
+<arg>${tab_name}</arg>
+<arg>exact_match=True</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:20.614" starttime="20171227 14:34:20.168"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:20.614" starttime="20171227 14:34:19.297"></status>
+</kw>
+<kw name="Navigate" library="FUNCTIONALITY">
+<arguments>
+<arg>Feeds</arg>
+</arguments>
+<kw name="Get Current Activity" library="resource">
+<kw name="Get Activity" library="AppiumLibrary">
+<doc>Retrieves the current activity on the device.</doc>
+<assign>
+<var>${ACTIVITY}</var>
+</assign>
+<msg timestamp="20171227 14:34:20.711" level="INFO">${ACTIVITY} = .ui.activities.MainActivity</msg>
+<status status="PASS" endtime="20171227 14:34:20.712" starttime="20171227 14:34:20.616"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Accessing ${ACTIVITY}</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:20.714" starttime="20171227 14:34:20.713"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${ACTIVITY}</arg>
+</arguments>
+<msg timestamp="20171227 14:34:20.716" level="INFO">${ACTIVITY} = .ui.activities.MainActivity</msg>
+<status status="PASS" endtime="20171227 14:34:20.716" starttime="20171227 14:34:20.715"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:20.717" starttime="20171227 14:34:20.616"></status>
+</kw>
+<kw name="Run Keywords" library="BuiltIn">
+<doc>Executes all the given keywords in a sequence.</doc>
+<arguments>
+<arg>Should Be Equal</arg>
+<arg>'${ACTIVITY}'</arg>
+<arg>'.ui.activities.MainActivity'</arg>
+<arg>AND</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>id=main_toolbar</arg>
+</arguments>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>'${ACTIVITY}'</arg>
+<arg>'.ui.activities.MainActivity'</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:20.718" starttime="20171227 14:34:20.718"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>id=main_toolbar</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:22.059" starttime="20171227 14:34:20.719"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:22.059" starttime="20171227 14:34:20.717"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>${tab_name}</arg>
+<arg>error=Couldn't locate ${tab_name}</arg>
+<arg>timeout=30</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:22.216" starttime="20171227 14:34:22.060"></status>
+</kw>
+<kw name="Click Text" library="AppiumLibrary">
+<doc>Click text identified by ``text``.</doc>
+<arguments>
+<arg>${tab_name}</arg>
+<arg>exact_match=True</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:22.765" starttime="20171227 14:34:22.217"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:22.766" starttime="20171227 14:34:20.615"></status>
+</kw>
+<kw name="Navigate" library="FUNCTIONALITY">
+<arguments>
+<arg>Contacts</arg>
+</arguments>
+<kw name="Get Current Activity" library="resource">
+<kw name="Get Activity" library="AppiumLibrary">
+<doc>Retrieves the current activity on the device.</doc>
+<assign>
+<var>${ACTIVITY}</var>
+</assign>
+<msg timestamp="20171227 14:34:22.859" level="INFO">${ACTIVITY} = .ui.activities.MainActivity</msg>
+<status status="PASS" endtime="20171227 14:34:22.860" starttime="20171227 14:34:22.769"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Accessing ${ACTIVITY}</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:22.861" starttime="20171227 14:34:22.860"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${ACTIVITY}</arg>
+</arguments>
+<msg timestamp="20171227 14:34:22.863" level="INFO">${ACTIVITY} = .ui.activities.MainActivity</msg>
+<status status="PASS" endtime="20171227 14:34:22.863" starttime="20171227 14:34:22.862"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:22.864" starttime="20171227 14:34:22.768"></status>
+</kw>
+<kw name="Run Keywords" library="BuiltIn">
+<doc>Executes all the given keywords in a sequence.</doc>
+<arguments>
+<arg>Should Be Equal</arg>
+<arg>'${ACTIVITY}'</arg>
+<arg>'.ui.activities.MainActivity'</arg>
+<arg>AND</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>id=main_toolbar</arg>
+</arguments>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>'${ACTIVITY}'</arg>
+<arg>'.ui.activities.MainActivity'</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:22.866" starttime="20171227 14:34:22.865"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>id=main_toolbar</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:23.608" starttime="20171227 14:34:22.867"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:23.608" starttime="20171227 14:34:22.864"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>${tab_name}</arg>
+<arg>error=Couldn't locate ${tab_name}</arg>
+<arg>timeout=30</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:23.844" starttime="20171227 14:34:23.610"></status>
+</kw>
+<kw name="Click Text" library="AppiumLibrary">
+<doc>Click text identified by ``text``.</doc>
+<arguments>
+<arg>${tab_name}</arg>
+<arg>exact_match=True</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:24.384" starttime="20171227 14:34:23.844"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:24.385" starttime="20171227 14:34:22.766"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20171227 14:34:27.387" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" endtime="20171227 14:34:27.387" starttime="20171227 14:34:24.386"></status>
+</kw>
+<kw name="Navigate" library="FUNCTIONALITY">
+<arguments>
+<arg>Discover</arg>
+</arguments>
+<kw name="Get Current Activity" library="resource">
+<kw name="Get Activity" library="AppiumLibrary">
+<doc>Retrieves the current activity on the device.</doc>
+<assign>
+<var>${ACTIVITY}</var>
+</assign>
+<msg timestamp="20171227 14:34:27.478" level="INFO">${ACTIVITY} = .ui.activities.MainActivity</msg>
+<status status="PASS" endtime="20171227 14:34:27.478" starttime="20171227 14:34:27.389"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Accessing ${ACTIVITY}</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:27.479" starttime="20171227 14:34:27.478"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${ACTIVITY}</arg>
+</arguments>
+<msg timestamp="20171227 14:34:27.480" level="INFO">${ACTIVITY} = .ui.activities.MainActivity</msg>
+<status status="PASS" endtime="20171227 14:34:27.480" starttime="20171227 14:34:27.479"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:27.480" starttime="20171227 14:34:27.389"></status>
+</kw>
+<kw name="Run Keywords" library="BuiltIn">
+<doc>Executes all the given keywords in a sequence.</doc>
+<arguments>
+<arg>Should Be Equal</arg>
+<arg>'${ACTIVITY}'</arg>
+<arg>'.ui.activities.MainActivity'</arg>
+<arg>AND</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>id=main_toolbar</arg>
+</arguments>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>'${ACTIVITY}'</arg>
+<arg>'.ui.activities.MainActivity'</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:27.482" starttime="20171227 14:34:27.481"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>id=main_toolbar</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:27.653" starttime="20171227 14:34:27.482"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:27.654" starttime="20171227 14:34:27.481"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>${tab_name}</arg>
+<arg>error=Couldn't locate ${tab_name}</arg>
+<arg>timeout=30</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:27.770" starttime="20171227 14:34:27.654"></status>
+</kw>
+<kw name="Click Text" library="AppiumLibrary">
+<doc>Click text identified by ``text``.</doc>
+<arguments>
+<arg>${tab_name}</arg>
+<arg>exact_match=True</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:28.095" starttime="20171227 14:34:27.771"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:28.095" starttime="20171227 14:34:27.387"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Wait Until Page Contains</arg>
+<arg>News</arg>
+<arg>timeout=5</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+<var>${value}</var>
+</assign>
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>News</arg>
+<arg>timeout=5</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:29.012" starttime="20171227 14:34:28.098"></status>
+</kw>
+<msg timestamp="20171227 14:34:29.012" level="INFO">${status} = PASS</msg>
+<msg timestamp="20171227 14:34:29.013" level="INFO">${value} = None</msg>
+<status status="PASS" endtime="20171227 14:34:29.013" starttime="20171227 14:34:28.096"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'!='PASS'</arg>
+<arg>FUNCTIONALITY.Navigate</arg>
+<arg>Contacts</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:29.014" starttime="20171227 14:34:29.014"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'!='PASS'</arg>
+<arg>Sleep</arg>
+<arg>3</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:29.016" starttime="20171227 14:34:29.015"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'!='PASS'</arg>
+<arg>FUNCTIONALITY.Navigate</arg>
+<arg>Discover</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:29.017" starttime="20171227 14:34:29.016"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'!='PASS'</arg>
+<arg>Sleep</arg>
+<arg>3</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:29.018" starttime="20171227 14:34:29.017"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'!='PASS'</arg>
+<arg>FUNCTIONALITY.Navigate</arg>
+<arg>Contacts</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:29.019" starttime="20171227 14:34:29.018"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'!='PASS'</arg>
+<arg>Sleep</arg>
+<arg>3</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:29.019" starttime="20171227 14:34:29.019"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'!='PASS'</arg>
+<arg>FUNCTIONALITY.Navigate</arg>
+<arg>Discover</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:29.020" starttime="20171227 14:34:29.020"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Wait Until Page Contains</arg>
+<arg>News</arg>
+<arg>timeout=5</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+<var>${value}</var>
+</assign>
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>News</arg>
+<arg>timeout=5</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:29.353" starttime="20171227 14:34:29.021"></status>
+</kw>
+<msg timestamp="20171227 14:34:29.354" level="INFO">${status} = PASS</msg>
+<msg timestamp="20171227 14:34:29.354" level="INFO">${value} = None</msg>
+<status status="PASS" endtime="20171227 14:34:29.354" starttime="20171227 14:34:29.021"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'!='PASS'</arg>
+<arg>FUNCTIONALITY.Navigate</arg>
+<arg>Contacts</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:29.355" starttime="20171227 14:34:29.355"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'!='PASS'</arg>
+<arg>Sleep</arg>
+<arg>3</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:29.357" starttime="20171227 14:34:29.356"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'!='PASS'</arg>
+<arg>FUNCTIONALITY.Navigate</arg>
+<arg>Discover</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:29.358" starttime="20171227 14:34:29.357"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'!='PASS'</arg>
+<arg>Sleep</arg>
+<arg>3</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:29.359" starttime="20171227 14:34:29.358"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'!='PASS'</arg>
+<arg>FUNCTIONALITY.Navigate</arg>
+<arg>Contacts</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:29.360" starttime="20171227 14:34:29.359"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'!='PASS'</arg>
+<arg>Sleep</arg>
+<arg>3</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:29.361" starttime="20171227 14:34:29.361"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}'!='PASS'</arg>
+<arg>FUNCTIONALITY.Navigate</arg>
+<arg>Discover</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:29.362" starttime="20171227 14:34:29.362"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:29.363" starttime="20171227 14:33:58.673"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:29.363" starttime="20171227 14:33:05.674"></status>
+</kw>
+<kw type="teardown" name="Teardown Steps" library="resource">
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<arguments>
+<arg>Log To Console</arg>
+<arg>Failed :{</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:29.364" starttime="20171227 14:34:29.364"></status>
+</kw>
+<kw name="Run Keyword If Test Passed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test passed.</doc>
+<arguments>
+<arg>Run Keywords</arg>
+<arg>Log To Console</arg>
+<arg>Success :D</arg>
+<arg>AND</arg>
+<arg>Close All Applications</arg>
+</arguments>
+<kw name="Run Keywords" library="BuiltIn">
+<doc>Executes all the given keywords in a sequence.</doc>
+<arguments>
+<arg>Log To Console</arg>
+<arg>Success :D</arg>
+<arg>AND</arg>
+<arg>Close All Applications</arg>
+</arguments>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Success :D</arg>
+</arguments>
+<status status="PASS" endtime="20171227 14:34:29.366" starttime="20171227 14:34:29.366"></status>
+</kw>
+<kw name="Close All Applications" library="AppiumLibrary">
+<doc>Closes all open applications.</doc>
+<status status="PASS" endtime="20171227 14:34:32.053" starttime="20171227 14:34:29.367"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:32.053" starttime="20171227 14:34:29.365"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:32.054" starttime="20171227 14:34:29.365"></status>
+</kw>
+<status status="PASS" endtime="20171227 14:34:32.054" starttime="20171227 14:34:29.364"></status>
+</kw>
+<doc>Will automate to BBM Login</doc>
+<tags>
+<tag>Login</tag>
+</tags>
+<status status="PASS" endtime="20171227 14:34:32.055" critical="yes" starttime="20171227 14:32:36.191"></status>
+</test>
+<status status="PASS" endtime="20171227 14:34:32.056" starttime="20171227 14:32:35.437"></status>
+</suite>
+<status status="PASS" endtime="20171227 14:34:32.061" starttime="20171227 14:32:35.432"></status>
+</suite>
+<status status="PASS" endtime="20171227 14:34:32.064" starttime="20171227 14:32:35.407"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">Login</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="BBM-Partner-QE-India" pass="1">BBM-Partner-QE-India</stat>
+<stat fail="0" id="s1-s1" name="Tests" pass="1">BBM-Partner-QE-India.Tests</stat>
+<stat fail="0" id="s1-s1-s1" name="BBM Login" pass="1">BBM-Partner-QE-India.Tests.BBM Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
